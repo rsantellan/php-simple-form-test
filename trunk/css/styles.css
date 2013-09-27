@@ -1,0 +1,152 @@
+/***
+ *  
+ * Basic stuff
+ * 
+ **/ 
+
+@font-face {
+    font-family: maiandra;
+    src: url(maiandra_gd.ttf);
+}
+
+
+div.clear{
+    clear: both !important;
+}
+
+div.container{
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px;
+    background-color: white;
+}
+
+/***
+ *  
+ * Header
+ * 
+ **/ 
+ 
+div.header{
+    
+}
+
+div.header div.headerText{
+    background-color: #4c0066;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    font-family: maiandra;
+    height: 100px;
+    line-height: 60px;
+}
+
+div.headerFadeContainer div.headerFade{
+    height: 20px;
+}
+
+div.headerFadeContainer div.headerFade1{
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(115, 0, 154) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(115, 0, 154, 0.6);
+}
+div.headerFadeContainer div.headerFade2{
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(118, 36, 181) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(118, 36, 181, 0.6);
+}
+div.headerFadeContainer div.headerFade3{
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(215, 143, 240) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(215, 143, 240, 0.6);
+}
+/***
+http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
+http://stackoverflow.com/questions/8865458/how-to-align-text-vertical-center-in-div-with-css
+***/
+
+
+/***
+ *  
+ * Footer
+ * 
+ **/ 
+ 
+div.footer{
+    text-align: center;
+}
+
+
+/***
+ *  
+ * Main body
+ * 
+ **/ 
+
+div.mainBody{
+
+}
+
+div.mainBody{
+    height: 729px;
+    background-image:url('../images/Surco.png');
+    background-repeat:no-repeat;
+    z-index: -1;
+}
+
+div.mainBody div.headerFadeContainer {
+    position: relative;
+    top: -40px;
+    z-index: 1;
+}
+
+/***
+ *  
+ * Main body form
+ * 
+ **/ 
+ 
+div.mainBody div.form_container{
+    width: 372px !important;
+    height: 504px;
+    background-image:url('../images/cuaderno.png');
+    background-repeat:no-repeat;
+    margin-left: 40px;
+}
+
+
+div.mainBody div.form_container div.lapiz_container {
+    position: relative;
+    left: 130px;
+    top: -100px;
+    z-index: 1;
+}
+
+div.mainBody div.form_container div.form_questions_container{
+    /**
+    position: relative;
+    left: 15px;
+    top: -45px;
+    **/
+    width: 358px;
+}
+
+/**
+div.mainBody div.form_container div.form_questions_container div.input_label > input {
+    border: medium none rgba(0, 0, 0, 0);
+    height: 10px;
+}
+**/
+
+div.mainBody div.form_container div.form_questions_container  label{
+    font-weight: bold;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_name{
+    position: relative;
+    left: 15px;
+}

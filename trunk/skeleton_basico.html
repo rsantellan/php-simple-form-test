@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+    <head>
+        <title>Surco preguntas</title>
+		<style>
+			@font-face {
+				font-family: maiandra;
+				src: url(maiandra_gd.ttf);
+				/** format: "ttf"; **/
+			}
+			div.container{
+				margin-right: auto;
+				margin-left: auto;
+				width: 700px;
+				background-color: white;
+			}
+			
+			div.header{
+				
+			}
+			
+			div.headerText{
+				background-color: #4c0066;
+				color: white;
+				font-size: 26px;
+				font-weight: bold;
+				text-align: center;
+				font-family: maiandra;
+				height: 100px;
+				line-height: 60px;
+			}
+			
+			div.headerFadeContainer div.headerFade{
+				height: 20px;
+			}
+			
+			div.headerFadeContainer div.headerFade1{
+				/* Fallback for web browsers that doesn't support RGBa */
+				background: rgb(115, 0, 154) transparent;
+				/* RGBa with 0.6 opacity */
+				background: rgba(115, 0, 154, 0.6);
+			}
+			div.headerFadeContainer div.headerFade2{
+				/* Fallback for web browsers that doesn't support RGBa */
+				background: rgb(118, 36, 181) transparent;
+				/* RGBa with 0.6 opacity */
+				background: rgba(118, 36, 181, 0.6);
+			}
+			div.headerFadeContainer div.headerFade3{
+				/* Fallback for web browsers that doesn't support RGBa */
+				background: rgb(215, 143, 240) transparent;
+				/* RGBa with 0.6 opacity */
+				background: rgba(215, 143, 240, 0.6);
+			}
+			/***
+			http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
+			http://stackoverflow.com/questions/8865458/how-to-align-text-vertical-center-in-div-with-css
+			***/
+			
+			div.mainBody{
+			
+			}
+			
+			div.footer{
+				text-align: center;
+			}
+			
+			div.clear{
+				clear: both !important;
+			}
+			
+			div.mainBody{
+				height: 729px;
+				background-image:url('Surco.png');
+				
+			}
+			
+			.headerFadeContainer {
+				position: relative;
+				top: -40px;
+				z-index: 1;
+			}
+		</style>
+    </head>
+
+    <body>
+        <div class="container">
+			<div class="header">
+				<div class="headerText">
+					RELLENA EL FORMULARIO A CONTINUACI&Oacute;N
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="mainBody">
+				<div class="headerFadeContainer">
+					<div class="headerFade headerFade1"></div>
+					<div class="headerFade headerFade2"></div>
+					<div class="headerFade headerFade3"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<img src="surco-logo-horizontal.png" alt="Surco Seguros" />
+			</div>
+        </div>
+
+    </body>
+</html>
