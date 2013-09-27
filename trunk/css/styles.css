@@ -64,6 +64,18 @@ div.headerFadeContainer div.headerFade3{
     /* RGBa with 0.6 opacity */
     background: rgba(215, 143, 240, 0.6);
 }
+
+div.header div.headerQuestionText{
+    background-color: #4c0066;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    font-family: maiandra;
+    height: 50px;
+    line-height: 60px;
+}
+
 /***
 http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
 http://stackoverflow.com/questions/8865458/how-to-align-text-vertical-center-in-div-with-css
@@ -93,7 +105,7 @@ div.mainBody{
 
 div.mainBody{
     height: 729px;
-    background-image:url('../images/Surco.png');
+    background-image:url('../images/main-form.png');
     background-repeat:no-repeat;
     z-index: -1;
 }
@@ -149,4 +161,32 @@ div.mainBody div.form_container div.form_questions_container  label{
 div.mainBody div.form_container div.form_questions_container div.input_name{
     position: relative;
     left: 15px;
+}
+
+
+/***
+
+Questions
+
+***/
+
+div.logocorner img{
+    /*
+    width: 218px;
+    height: 174px;
+    background-image:url('../images/surco-logo-corner.png');
+    background-repeat:no-repeat;
+    z-index: 1;
+    position: relative;
+    */
+    overflow:auto;
+    float: right;
+}
+
+
+div.mainQuestionBody{
+    height: 729px;
+    background-image:url('../images/main-question.png');
+    background-repeat:no-repeat;
+    z-index: -1;
 }
