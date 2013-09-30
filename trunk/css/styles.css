@@ -91,11 +91,28 @@ http://stackoverflow.com/questions/3772273/pure-css-checkbox-image-replacement
  
 div.footer{
     text-align: center;
-	border-top: solid;
-	border-top-color: #3d0052;
-	border-top-width: 5px;
+    border-top: solid;
+    border-top-color: #3d0052;
+    border-top-width: 5px;
 }
 
+div.homeFooter{
+    text-align: left;
+    border-top: solid;
+    border-top-color: #3d0052;
+    border-top-width: 5px;
+}
+
+div.homeFooter img{
+    margin-left: 55px;
+}
+div.homeTextFooter{
+    background-color: #B501F0;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
 
 /***
  *  
@@ -456,12 +473,9 @@ div.container div.headerPremios div.headerBodyPremiosText{
     font-size: 18px;
 }
 
-div.container div.headerHome{
+div.container div.headerHome div.headerSpaceText{
+    height: 20px;
     background-color: #4c0066;
-}
-div.container div.headerHome div.headerHomeText{
-    background-color: #270034;
-    color: white;
 }
 
 div.container div.mainPremiosBody{
@@ -492,6 +506,8 @@ div.container div.extraPremiosFooter{
     font-size: 20px;
 }
 
+
+
 /**
 div.container div.mainPremiosBody div.premiosRow div.leftPremioColumn{
     float: left;
@@ -512,3 +528,35 @@ div.container div.mainPremiosBody div.premiosRow div.rightPremioColumn{
     text-align: center;
 }
 **/
+
+/***
+ * 
+ * Home
+ * 
+ ***/ 
+
+div.container div.headerHome{
+    background-color: #4c0066;
+}
+
+div.container div.headerHome div.headerHomeText{
+    background-color: #270034;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+
+div.container div.mainHomeBody{
+    height: 716px;
+    background-image:url('../images/home-back.png');
+    background-repeat:no-repeat;
+    z-index: -1;
+}
+
+div.container div.mainHomeBody div.giftContainer{
+    float: right;
+    margin-right: 10px;
+    margin-top: 65px;
+}
+
+
