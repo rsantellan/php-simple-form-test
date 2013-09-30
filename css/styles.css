@@ -9,6 +9,9 @@
     src: url(maiandra_gd.ttf);
 }
 
+body{
+	font-family: maiandra;
+}
 
 div.clear{
     clear: both !important;
@@ -19,6 +22,9 @@ div.container{
     margin-left: auto;
     width: 700px;
     background-color: white;
+	border: solid;
+	border-color: #3d0052;
+	border-width: 1px;
 }
 
 /***
@@ -65,20 +71,14 @@ div.headerFadeContainer div.headerFade3{
     background: rgba(215, 143, 240, 0.6);
 }
 
-div.header div.headerQuestionText{
-    background-color: #4c0066;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    font-family: maiandra;
-    height: 50px;
-    line-height: 60px;
-}
+
 
 /***
 http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
 http://stackoverflow.com/questions/8865458/how-to-align-text-vertical-center-in-div-with-css
+http://stackoverflow.com/questions/17966307/resize-text-in-a-fixed-size-div-to-fit
+http://www.thecssninja.com/css/custom-inputs-using-css
+http://stackoverflow.com/questions/3772273/pure-css-checkbox-image-replacement
 ***/
 
 
@@ -86,10 +86,14 @@ http://stackoverflow.com/questions/8865458/how-to-align-text-vertical-center-in-
  *  
  * Footer
  * 
+ 
  **/ 
  
 div.footer{
     text-align: center;
+	border-top: solid;
+	border-top-color: #3d0052;
+	border-top-width: 5px;
 }
 
 
@@ -183,10 +187,174 @@ div.logocorner img{
     float: right;
 }
 
+div.header div.headerQuestionText{
+    background-color: #270034;
+    color: white;
+    font-size: 10px;
+	text-transform:uppercase;
+    font-weight: bold;
+    text-align: center;
+    font-family: maiandra;
+    height: 40px;
+    line-height: 40px;
+}
 
 div.mainQuestionBody{
-    height: 729px;
+    height: 500px;
     background-image:url('../images/main-question.png');
     background-repeat:no-repeat;
     z-index: -1;
+}
+
+form.question_container div.question{
+	background-color: #4c0066;
+	color: #00fcff;
+	font-size: 30px;
+	text-align: center;
+}
+
+form.question_container div.answer{
+	text-align: center;
+	color: white;
+	height: 50px;
+}
+
+form.question_container div.answer1{
+	background-color: #a200d9;
+}
+
+form.question_container div.answer2{
+	background-color: #bd24f0;
+}
+form.question_container div.answer3{
+	background-color: #c937fa;
+}
+form.question_container div.answer4{
+	background-color: #cf40ff;
+}
+
+
+form.question_container div.answerNumber{
+	width: 50px;
+	text-align: left;
+	float: left;
+	margin-left: 15px;
+}
+
+form.question_container div.answerText{
+	width: 570px;
+	text-align: left;
+	float: left;
+	margin-left: 10px;
+	font-size: 22px;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+form.question_container div.answerCheck{
+	width: 50px;
+	height: 50px;
+	float: left;
+    
+}
+
+form.question_container div.answerCheck div.insideAnswerCheck{
+	margin: 15px 0 0;
+    top: 25%;
+}
+
+
+div.mainQuestionBody div.corregirContainer{
+	padding-left: 10px;
+	float: left;
+}
+div.mainQuestionBody div.corregirContainer a.corregir-link  img{
+	margin-top: 30px;
+}
+
+div.mainQuestionBody div.semaforoContainer{
+	float: right;
+}
+
+div.mainQuestionBody div.semaforoContainer div.semaforoInnerContainer{
+    margin-right: 11px;
+    margin-top: 20px;
+}
+
+div.mainQuestionBody div.finalTextResult{
+    font-size: 30px;
+    padding-top: 120px;
+    padding-left: 14%;
+    display: none;
+}
+
+div.mainQuestionBody div.finalTextContainer{
+    color: #0000ff;
+    text-shadow: 3px 2px 1px #FFFFFF, -3px -2px 1px #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.mainQuestionBody div.finalTextErrorContainer{
+    color: #0000ff;
+    text-shadow: 1px 1px 1px #FFFFFF, -1px -1px 1px #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.mainQuestionBody div.finalOkTextContainer{
+    margin-top: 85px;
+    display: none;
+}
+
+
+div.mainQuestionBody div.finalOkTextContainer div.finalOkTextHeader{
+    font-size: 44px;
+}
+
+div.mainQuestionBody div.finalOkTextContainer div.finalOkTextBody{
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+div.mainQuestionBody div.finalErrorTextContainer{
+    margin-top: 65px;
+    display: none;
+}
+
+div.mainQuestionBody div.finalErrorTextContainer div.finalErrorTextHeader{
+    font-size: 20px;
+}
+
+div.mainQuestionBody div.finalErrorTextContainer div.finalErrorTextBody{
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+div.mainQuestionBody div.finalErrorTextContainer div.finalErrorTextBody a{
+    text-decoration:none;
+}
+
+div.answerCheck input[type=checkbox] {
+	display:none;
+}
+ 
+div.answerCheck input[type=checkbox] + label
+{
+	
+	background-image:url('../images/box.png');
+    background-repeat:no-repeat;
+	height: 22px;
+	width: 21px;
+	display:inline-block;
+	padding: 0 0 0 0px;
+}
+div.answerCheck input[type=checkbox]:checked + label
+{
+	background-image:url('../images/box-checked.png');
+    background-repeat:no-repeat;
+	height: 22px;
+	width: 21px;
+	display:inline-block;
+	padding: 0 0 0 0px;
 }
