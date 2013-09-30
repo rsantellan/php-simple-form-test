@@ -129,7 +129,7 @@ div.mainBody div.headerFadeContainer {
 div.mainBody div.form_container{
     width: 372px !important;
     height: 504px;
-    background-image:url('../images/cuaderno.png');
+    background-image:url('../images/bloc.png');
     background-repeat:no-repeat;
     margin-left: 40px;
 }
@@ -163,10 +163,83 @@ div.mainBody div.form_container div.form_questions_container  label{
 }
 
 div.mainBody div.form_container div.form_questions_container div.input_name{
+    left: 30px;
     position: relative;
-    left: 15px;
+    top: -43px;
 }
 
+div.mainBody div.form_container div.form_questions_container div.input_lastname{
+    left: 30px;
+    position: relative;
+    top: -39px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_ci{
+    left: 19px;
+    position: relative;
+    top: -35px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_age{
+    left: 30px;
+    position: relative;
+    top: -31px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_phone{
+    left: 30px;
+    position: relative;
+    top: -27px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_email{
+    left: 30px;
+    position: relative;
+    top: -23px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_state{
+    left: 30px;
+    position: relative;
+    top: -19px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_school{
+    left: 30px;
+    position: relative;
+    top: -16px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_grade{
+    left: 30px;
+    position: relative;
+    top: -12px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_transportation label{
+    left: 30px;
+    position: relative;
+    top: -3px;
+}
+
+div.mainBody div.form_container div.form_questions_container div.input_transportation input{
+    left: 30px;
+    position: relative;
+    top: 1px;
+}
+
+div.mainBody div.form_container div.form_questions_container a.link_enviar{
+    float: right;
+    margin-right: 30px;
+    position: relative;
+    top: -25px;
+}
+div.mainBody div.form_container div.form_questions_container label.input_ci_aclaration{
+    font-size: 14px;
+    left: 20px;
+    position: relative;
+    top: -10px;
+}
 
 /***
 
@@ -352,9 +425,90 @@ div.answerCheck input[type=checkbox] + label
 div.answerCheck input[type=checkbox]:checked + label
 {
 	background-image:url('../images/box-checked.png');
-    background-repeat:no-repeat;
+	background-repeat:no-repeat;
 	height: 22px;
 	width: 21px;
 	display:inline-block;
 	padding: 0 0 0 0px;
 }
+
+/**
+ * 
+ * Premios
+ * 
+ **/ 
+
+div.container div.headerPremios div.headerPremiosText{
+    background-color: #270034;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    height: 45px;
+    line-height: 50px;
+}
+
+div.container div.headerPremios div.headerBodyPremiosText{
+    background-color: #4c0066; 
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+
+div.container div.headerHome{
+    background-color: #4c0066;
+}
+div.container div.headerHome div.headerHomeText{
+    background-color: #270034;
+    color: white;
+}
+
+div.container div.mainPremiosBody{
+    background-color: #a39abf; 
+}
+
+div.container div.mainPremiosBody div.premiosRow{
+    height: 210px;
+    padding-top: 15px;
+}
+
+div.container div.mainPremiosBody div.premiosRowBottom{
+    vertical-align: bottom;
+    display: table-cell;
+    height: 230px !important;
+}
+
+div.container div.mainPremiosBody div.premiosRow div{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+div.container div.extraPremiosFooter{
+    background-color: #b501f0;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/**
+div.container div.mainPremiosBody div.premiosRow div.leftPremioColumn{
+    float: left;
+    width: 33%;
+    text-align: center;
+    
+}
+
+div.container div.mainPremiosBody div.premiosRow div.centerPremioColumn{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+div.container div.mainPremiosBody div.premiosRow div.rightPremioColumn{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+**/
