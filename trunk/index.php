@@ -6,10 +6,11 @@ mb_internal_encoding('UTF-8');
 // Tell PHP that we'll be outputting UTF-8 to the browser
 mb_http_output('UTF-8');
 
-$dbserver = 'localhost';
-$dbuser = 'root';
-$dbpass = 'root';
-$dbname = 'surco';
+include_once 'defines/constant.php';
+$dbserver = DBSERVER;
+$dbuser = DBUSER;
+$dbpass = DBPASS;
+$dbname = DBNAME;
 
 function retrieveAllQuestionsAndAnswers($dbserver, $dbuser, $dbpass, $dbname)
 {

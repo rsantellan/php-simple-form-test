@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: maiandra;
-    src: url(maiandra_gd.ttf);
+    src: url(MAIAN.TTF);
 }
 
 body{
@@ -34,7 +34,7 @@ div.container{
  **/ 
  
 div.header{
-    
+    min-height: 60px;
 }
 
 div.header div.headerText{
@@ -144,28 +144,27 @@ div.mainBody div.headerFadeContainer {
  **/ 
  
 div.mainBody div.form_container{
-    width: 372px !important;
-    height: 504px;
-    background-image:url('../images/bloc.png');
-    background-repeat:no-repeat;
-    margin-left: 40px;
+    position: relative;
+    top: -100px;
 }
 
 
-div.mainBody div.form_container div.lapiz_container {
+div.mainBody div.lapiz_container {
     position: relative;
     left: 130px;
     top: -100px;
     z-index: 1;
+    height: 112px;
+    width: 81px;
 }
 
-div.mainBody div.form_container div.form_questions_container{
-    /**
-    position: relative;
-    left: 15px;
-    top: -45px;
-    **/
-    width: 358px;
+div.mainBody div.form_container div.form_questions_container form.real_form{
+    width: 408px !important;
+    height: 553px !important;
+    background-image:url('../images/bloc.png');
+    background-repeat:no-repeat;
+    margin-left: 40px;
+    /** width: 358px; **/
 }
 
 /**
@@ -179,6 +178,46 @@ div.mainBody div.form_container div.form_questions_container  label{
     font-weight: bold;
 }
 
+
+div.mainBody div.form_container div.form_questions_container form.real_form div.form_space_div{
+    height: 83px;
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form div.input_label{
+    position: relative;
+    margin-left: 40px;
+    width: 80%;
+    height: 30px;
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form div.input_transportation{
+    
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form div.input_transportation label{
+    position: relative;
+    top: 5px;
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form div.input_transportation input{
+    position: relative;
+    top: 10px;
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form a.link_enviar{
+    float: right;
+    margin-right: 50px;
+    position: relative;
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form label.input_ci_aclaration{
+    font-size: 14px;
+    position: relative;
+    margin-left: 40px;
+    top: 10px;
+}
+
+/**
 div.mainBody div.form_container div.form_questions_container div.input_name{
     left: 30px;
     position: relative;
@@ -186,15 +225,11 @@ div.mainBody div.form_container div.form_questions_container div.input_name{
 }
 
 div.mainBody div.form_container div.form_questions_container div.input_lastname{
-    left: 30px;
-    position: relative;
-    top: -39px;
+    margin-top: 4px;
 }
 
 div.mainBody div.form_container div.form_questions_container div.input_ci{
-    left: 19px;
-    position: relative;
-    top: -35px;
+    margin-top: 10px;
 }
 
 div.mainBody div.form_container div.form_questions_container div.input_age{
@@ -233,30 +268,7 @@ div.mainBody div.form_container div.form_questions_container div.input_grade{
     top: -12px;
 }
 
-div.mainBody div.form_container div.form_questions_container div.input_transportation label{
-    left: 30px;
-    position: relative;
-    top: -3px;
-}
-
-div.mainBody div.form_container div.form_questions_container div.input_transportation input{
-    left: 30px;
-    position: relative;
-    top: 1px;
-}
-
-div.mainBody div.form_container div.form_questions_container a.link_enviar{
-    float: right;
-    margin-right: 30px;
-    position: relative;
-    top: -25px;
-}
-div.mainBody div.form_container div.form_questions_container label.input_ci_aclaration{
-    font-size: 14px;
-    left: 20px;
-    position: relative;
-    top: -10px;
-}
+**/
 
 /***
 
@@ -279,14 +291,13 @@ div.logocorner img{
 
 div.header div.headerQuestionText{
     background-color: #270034;
-    color: white;
+    color: #FFFFFF;
     font-size: 10px;
-	text-transform:uppercase;
     font-weight: bold;
-    text-align: center;
-    font-family: maiandra;
-    height: 40px;
-    line-height: 40px;
+    height: 60px;
+    line-height: 60px;
+    text-align: justify;
+    text-transform: uppercase;
 }
 
 div.mainQuestionBody{
@@ -299,14 +310,24 @@ div.mainQuestionBody{
 form.question_container div.question{
 	background-color: #4c0066;
 	color: #00fcff;
-	font-size: 30px;
-	text-align: center;
+	font-size: 29px;
+	text-align: justify;
+    min-height: 60px;
+}
+
+form.question_container div.question label {
+    display: inline-block;
 }
 
 form.question_container div.answer{
 	text-align: center;
 	color: white;
-	height: 50px;
+	/** height: 90px; **/
+    height: 57px;
+}
+
+form.question_container div.answer div.answerNumber > img {
+    margin-top: 3px;
 }
 
 form.question_container div.answer1{
@@ -337,8 +358,12 @@ form.question_container div.answerText{
 	float: left;
 	margin-left: 10px;
 	font-size: 22px;
-	line-height: 50px;
+	/**line-height: 50px; **/
 	font-weight: bold;
+}
+
+form.question_container div.answerText label{ 
+    display: inline-block;
 }
 
 form.question_container div.answerCheck{
@@ -434,8 +459,8 @@ div.answerCheck input[type=checkbox] + label
 	
 	background-image:url('../images/box.png');
     background-repeat:no-repeat;
-	height: 22px;
-	width: 21px;
+	height: 32px;
+	width: 32px;
 	display:inline-block;
 	padding: 0 0 0 0px;
 }
@@ -443,8 +468,8 @@ div.answerCheck input[type=checkbox]:checked + label
 {
 	background-image:url('../images/box-checked.png');
 	background-repeat:no-repeat;
-	height: 22px;
-	width: 21px;
+	height: 32px;
+	width: 32px;
 	display:inline-block;
 	padding: 0 0 0 0px;
 }
