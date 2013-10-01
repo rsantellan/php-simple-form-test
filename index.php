@@ -19,9 +19,10 @@ function retrieveAllQuestionsAndAnswers($dbserver, $dbuser, $dbpass, $dbname)
     trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
     return array();
    }
+   
    $data = array();
-   $sql = "select pregunta.id, pregunta.pregunta, pregunta.respuesta, pregunta.mensajeok, pregunta.mensajeerror, opcion.id as oid, opcion.texto from pregunta, opcion where opcion.pregunta_id = pregunta.id";
-   $rs=$conn->query($sql);
+   $sql = "select pregunta.id, pregunta.pregunta, pregunta.nro, opcion.id as oid, opcion.texto, opcion.correcto from pregunta, opcion where opcion.pregunta_id = pregunta.id order by pregunta.nro asc";
+   $rs = $conn->query($sql);
    $rs->data_seek(0);
    
    while($row = $rs->fetch_assoc()){
@@ -34,15 +35,17 @@ function retrieveAllQuestionsAndAnswers($dbserver, $dbuser, $dbpass, $dbname)
      {
          $obj = new stdClass();
          $obj->id = $row['id'];
+         $obj->nro = $row['nro'];
          $obj->pregunta = $row['pregunta'];
          $obj->respuesta = $row['respuesta'];
-         $obj->mensajeok = $row['mensajeok'];
-         $obj->mensajeerror = $row['mensajeerror'];
+         //$obj->mensajeok = $row['mensajeok'];
+         //$obj->mensajeerror = $row['mensajeerror'];
          $obj->opciones = array();
      }
      $opcion = new stdClass();
      $opcion->id = $row['oid'];
      $opcion->texto = $row['texto'];
+     $opcion->correcto = $row['correcto'];
      $obj->opciones[] = $opcion;
      $data[$obj->id] = $obj;
    }
@@ -73,7 +76,7 @@ header('Content-type: text/html; charset=UTF-8') ;
         <h4><?php echo my_html_encode($question->pregunta);?></h4>
             <ul>
             <?php foreach($question->opciones as $opcion): ?>
-                <li><?php echo my_html_encode($opcion->id . " - ". $opcion->texto);?> <?php echo ($question->respuesta == $opcion->id)? "(Correcto)" : "";?></li>
+                <li><?php echo my_html_encode($opcion->id . " - ". $opcion->texto);?> <?php echo ("1" == $opcion->correcto)? "(Correcto)" : "";?></li>
             <?php endforeach; ?>
             </ul>
         <?php
