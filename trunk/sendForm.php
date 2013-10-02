@@ -17,8 +17,10 @@ $questionNumber = (int) $_POST['questionNumber'];
 if($questionNumber == 15)
 {
     $_SESSION['lastQuestionNumber'] = true;
+    $_SESSION['lastQuestionAnswers'] = $goodAnswers;
+    
 }
-if($questionNumber < 15)
+if($questionNumber <= 15)
 {
     $_SESSION['questionNumber'] = $questionNumber + 1;
 }
@@ -56,6 +58,14 @@ if(isset($questions[$questionNumber]))
             $ok++;
         }
     }
+    else
+    {
+        if(!is_null($q1))
+        {
+            $ok--;
+        }
+        
+    }
     if($questions[$questionNumber]->opciones[1]->correcto == 1)
     {
         $cantidadok++;
@@ -63,6 +73,14 @@ if(isset($questions[$questionNumber]))
         {
             $ok++;
         }
+    }
+    else
+    {
+        if(!is_null($q2))
+        {
+            $ok--;
+        }
+        
     }
     if($questions[$questionNumber]->opciones[2]->correcto == 1)
     {
@@ -72,6 +90,14 @@ if(isset($questions[$questionNumber]))
             $ok++;
         }
     }
+    else
+    {
+        if(!is_null($q3))
+        {
+            $ok--;
+        }
+        
+    }
     if($questions[$questionNumber]->opciones[3]->correcto == 1)
     {
         $cantidadok++;
@@ -80,11 +106,20 @@ if(isset($questions[$questionNumber]))
             $ok++;
         }
     }
+    else
+    {
+        if(!is_null($q4))
+        {
+            $ok--;
+        }
+        
+    }
 
     if($ok == $cantidadok)
     {
         echo json_encode(array('response' => 'ok'));
         $_SESSION['questionAnswers']  = $goodAnswers + 1;
+        $_SESSION['lastQuestionAnswers'] = $goodAnswers + 1;
     }
     else
     {

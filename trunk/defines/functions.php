@@ -5,6 +5,22 @@ define("DBUSER", 'root');
 define("DBPASS", 'root');
 define("DBNAME", 'surco');
 
+function saveNewContenstant($ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation)
+{
+    $sql = "REPLACE INTO concursante (ci, name, lastname, age, phone, email, state, school, grade, transportation) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $conn = new mysqli(DBSERVER, DBUSER, DBPASS, DBNAME);
+   // check connection
+   if ($conn->connect_error) {
+    trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+    return array();
+   }
+   $stmt = $conn->prepare($sql);
+   $stmt->bind_param("ississssss", $ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation);
+   $stmt->execute();
+   $stmt->close(); 
+   $conn->close();
+}
+
 function retrieveAllQuestionsAndAnswers($dbserver, $dbuser, $dbpass, $dbname)
 {
    $conn = new mysqli($dbserver, $dbuser, $dbpass, $dbname);
