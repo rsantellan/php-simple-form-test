@@ -1,5 +1,17 @@
 <?php
 
+session_start();
+
+error_reporting(E_ALL);
+
+if(!isset($_SESSION['questionNumber']))
+{
+    $_SESSION['questionNumber'] = 1;
+}
+if(!isset($_SESSION['questionAnswers']))
+{
+    $_SESSION['questionAnswers'] = 0;
+}
 // Tell PHP that we're using UTF-8 strings until the end of the script
 mb_internal_encoding('UTF-8');
  
@@ -25,20 +37,21 @@ header('Content-type: text/html; charset=UTF-8') ;
         <title>Surco preguntas</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="js/functions.js"></script>
     </head>
     
     <body>
         <div class="container">
 	    <div class="header">
 		<div class="headerQuestionText">
-		    MARQUE LA/S OPCIÓN/ES CORRECTA/S. puede existir que una, varias o todas sean correctas o incorrectas
+		    MARQUE LA/S OPCI&Oacute;N/ES CORRECTA/S. puede existir que una, varias o todas sean correctas o incorrectas
 		</div>
 	    </div>
 	    
 		<div class="clear"></div>
 		
-		<form class="question_container">
-			<div class="question"><label id="questionText">1) ?Existe para todo el uruguay una ley de transito vial?</label></div>
+		<form id="question_form" action="sendForm.php" onsubmit="return false;" method="POST" class="question_container">
+		    <div class="question"><label id="questionText">1) ?Existe para todo el uruguay una ley de transito vial?</label></div>
 			<div class="answer answer1">
 				<div class="answerNumber answerNumber1">
 					<img src="images/answer1.png" alt="1" />
@@ -63,7 +76,7 @@ header('Content-type: text/html; charset=UTF-8') ;
 				</div>
 				<div class="answerCheck">
 					<div class="insideAnswerCheck">
-					 <input type='checkbox' name='q2' value='1' id="q2"/>
+					 <input type='checkbox' name='q2' value='2' id="q2"/>
 					 <label for="q2"></label>
 					</div>
 				</div>
@@ -78,7 +91,7 @@ header('Content-type: text/html; charset=UTF-8') ;
 				</div>
 				<div class="answerCheck">
 					<div class="insideAnswerCheck">
-					 <input type='checkbox' name='q3' value='1' id="q3"/>
+					 <input type='checkbox' name='q3' value='3' id="q3"/>
 					 <label for="q3"></label>
 					</div>
 				</div>
@@ -93,21 +106,22 @@ header('Content-type: text/html; charset=UTF-8') ;
 				</div>
 				<div class="answerCheck">
 					<div class="insideAnswerCheck">
-					 <input type='checkbox' name='q4' value='1' id="q4"/>
+					 <input type='checkbox' name='q4' value='4' id="q4"/>
 					 <label for="q4"></label>
 					</div>
 				</div>
 			</div>
+			<input type="hidden" value="1" id="questionNumber" name="questionNumber" />
 		</form>
 	    <div class="mainQuestionBody">
 			<div class="corregirContainer">
-				<a href="javascript:void(0)" class="corregir-link">
+				<a id="corregir_link" href="javascript:void(0)" class="corregir-link" onclick="checkSendAndSaveQuestion()">
 					<img src="images/corregir.png" alt="Corregir" />
 				</a>
 			</div>
 			<div class="semaforoContainer">
 				<div class="semaforoInnerContainer">
-					<img src="images/semaforo.png" alt="semaforo" />
+					<img id="semaforo" src="images/semaforo.png" alt="semaforo" />
 				</div>
 			</div>
 			
@@ -141,48 +155,12 @@ header('Content-type: text/html; charset=UTF-8') ;
         </div>
 	
 	<script type="text/javascript">
-	    var questionNumber = 1;
+	    var questionNumber = <?php echo $_SESSION['questionNumber'];?>;
+	    var goodAnswers = <?php echo $_SESSION['questionAnswers'];?>;
 	    var questionList = <?php echo json_encode($questions);?>;
-	    
-	    function showQuestion(questionId)
-	    {
-		question = questionList[questionId];
-		//console.info(question);
-		//console.info(question['pregunta']);
-		//console.info(question.pregunta);
-		$("#questionText").html(question.pregunta);
-		resizeTextOfId('questionText', 24, 29);
-		$("#answerText1").html(question.opciones[0].texto);
-		resizeTextOfId('answerText1', 16, 22);
-		$("#answerText2").html(question.opciones[1].texto);
-		resizeTextOfId('answerText2', 16, 22);
-		$("#answerText3").html(question.opciones[2].texto);
-		resizeTextOfId('answerText3', 16, 22);
-		$("#answerText4").html(question.opciones[3].texto);
-		resizeTextOfId('answerText4', 16, 22);
-		
-		
-	    }
-	    
-	    function resizeTextOfId(elementId, startFontSize, minFontSize)
-	    {
-		//return false;
-		var elementUsed = $('#'+elementId);
-		var maxWidth = elementUsed.parent().width();
-		var fontSize = startFontSize;
-		
-		do {
-		    fontSize++;
-		    elementUsed.css('font-size', fontSize.toString() + 'px');
-		    //console.info(elementUsed.width());
-		    //console.info(maxWidth);
-		} while ( (elementUsed.width()) < maxWidth && fontSize < minFontSize );
-		if(fontSize <= 22)
-		{
-		    fontSize --;
-		    elementUsed.css('font-size', fontSize.toString() + 'px');
-		}
-	    }
+	    console.info(questionNumber);
+	    console.info(goodAnswers);
+	    showQuestion(questionNumber);
 	    //console.info(questionList);
 	</script>
     </body>
