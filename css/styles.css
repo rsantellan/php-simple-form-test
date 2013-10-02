@@ -584,4 +584,8 @@ div.container div.mainHomeBody div.giftContainer{
     margin-top: 65px;
 }
 
-
+div.container div.mainHomeBody div.triviaTextContainer{
+    float: left;
+    margin-right: 10px;
+    margin-top: 50px;
+}

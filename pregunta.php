@@ -4,6 +4,22 @@ session_start();
 
 error_reporting(E_ALL);
 
+if(isset($_SESSION['lastQuestionNumber']))
+{
+    unset($_SESSION['lastQuestionNumber']);
+    $answers = (isset($_SESSION['lastQuestionAnswers'])) ? $_SESSION['lastQuestionAnswers'] : 0 ;
+    if($answers == 15)
+    {
+	header("Location: formulario.php");
+    }
+    else
+    {
+	header("Location: index.html");
+    }
+    
+    die();
+}
+
 if(!isset($_SESSION['questionNumber']))
 {
     $_SESSION['questionNumber'] = 1;
@@ -12,6 +28,9 @@ if(!isset($_SESSION['questionAnswers']))
 {
     $_SESSION['questionAnswers'] = 0;
 }
+if($_SESSION['questionNumber'] == 1)
+    $_SESSION['questionAnswers'] = 0;
+    
 // Tell PHP that we're using UTF-8 strings until the end of the script
 mb_internal_encoding('UTF-8');
  
@@ -125,28 +144,19 @@ header('Content-type: text/html; charset=UTF-8') ;
 				</div>
 			</div>
 			
-			<div class="finalTextContainer finalTextResult">
-			    Puntaje: 15 de 15
+			<div id="finalScore" class="finalTextContainer finalTextResult">
+			    <a href="javascript:void(0)">
+				<img id="img_puntaje" src="images/puntaje1_15.png" />
+			    </a>
 			</div>
 			<div class="clear"></div>
-			<div class="finalTextContainer finalOkTextContainer">
-			    <div class="finalOkTextHeader">
-				¡Felicitaciones!
-			    </div>
-			    <div class="finalOkTextBody">
-			      Estás participando de todos los sorteos.
-			    </div>
+			<div id="finalScoreAllGood" class="finalTextContainer finalOkTextContainer">
+			    <img src="images/felicitaciones.png" />
 			</div>
-			<div class="finalTextErrorContainer finalErrorTextContainer">
-			    <div class="finalErrorTextHeader">
-				Recuerda que para participar de los premios debes de tener todas las respuestas correctas.
-				Busca información y vuelve a intentarlo. Vamos, tu puedes!!
-			    </div>
-			    <div class="finalErrorTextBody">
-			      Si necesitas información para tus respuestas. Puedes acceder a las leyes 19061, 18113 o 18191
-			      <div class="clear"></div>
-			      <a href="javascript:void(0)">Ingresando aqu&iacute;!</a>
-			    </div>
+			<div id="finalScoreNotGood" class="finalTextErrorContainer finalErrorTextContainer">
+			    <img src="images/texto_perdedor.png" />
+			    <div class="clear"></div>
+			    <a href="javascript:void(0)"><img src="images/ingresando_aqui.png" /></a>
 			</div>
 	    </div>
 	    <div class="footer">
@@ -158,8 +168,8 @@ header('Content-type: text/html; charset=UTF-8') ;
 	    var questionNumber = <?php echo $_SESSION['questionNumber'];?>;
 	    var goodAnswers = <?php echo $_SESSION['questionAnswers'];?>;
 	    var questionList = <?php echo json_encode($questions);?>;
-	    console.info(questionNumber);
-	    console.info(goodAnswers);
+	    //console.info(questionNumber);
+	    //console.info(goodAnswers);
 	    showQuestion(questionNumber);
 	    //console.info(questionList);
 	</script>

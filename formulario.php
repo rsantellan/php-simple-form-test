@@ -4,9 +4,14 @@
 
     <head>
         <title>Surco Formulario</title>
-		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/additional-methods.min.js"></script>
+	<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
     </head>
-
     <body>
         <div class="container">
 			<div class="header">
@@ -29,7 +34,7 @@
 				
 				<div class="form_container">
 					<div class="form_questions_container">
-						<form class="real_form">
+						<form class="real_form" id="data_form" method="POST" onsubmit="return sendData(this);" action="saveFormData.php">
 							<div class="form_space_div"></div>
 							<div class="input_name input_label">
 								<label for="name">Nombre:</label>
@@ -83,13 +88,14 @@
 							</div>
 							<div class="clear"></div>
 							
-							<a class="link_enviar" href="javascript:void(0)">
+							<a id="link_enviar" class="link_enviar" href="javascript:void(0)" onclick="validateFormAndSend(this)">
 							    <img src="images/enviar.png" alt="Enviar" />
 							</a>
 							<div class="clear"></div>
 							<label class="input_ci_aclaration">
 							    *C&eacute;dula de Identidad sin puntos ni guiones
 							</label>
+							<div id="messageBox" title="Por favor corrige estos errores."></div>
 						</form>
 						
 					</div>
@@ -102,6 +108,98 @@
 				<img src="images/surco-logo-horizontal.png" alt="Surco Seguros" />
 			</div>
         </div>
-
+    <script type="text/javascript">
+	   var validator = $("#data_form").validate({
+		rules: {
+			name: "required",
+			lastname: "required",
+			ci: {
+				required: true,
+				minlength: 8,
+				maxlength: 8
+			},
+			age: {
+				required: true,
+				digits: true
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			state: {
+				required: true
+			},
+			school: "required",
+			grade: "required",
+			transportation: "required"
+		},
+		messages: {
+			name: "Ingresa tu nombre",
+			lastname: "Ingresa tu apellido",
+			ci: {
+				required: "Ingresa tu cedula",
+				minlength: "Acuerdate que tu cedula tiene que ser sin puntos ni guiones"
+			},
+			age: {
+				required: "Ingresa cuantos a&ntilde;os tienes",
+			},
+			phone: {
+				required: "Ingresa tu tel&eacute;fono",
+			},
+			email: "Ingresa una direcci&oacute;n valida de e-mail",
+			state: "Ingresa tu departamento",
+			school: "Ingresa tu escuela",
+			grade: "Ingresa el grado que estas",
+			transportation: "Ingresa la forma de transporte que utilizas para ir a la escuela.",
+		},
+	     errorLabelContainer: "#messageBox",
+	     wrapper: "span"
+	    });
+	
+	function validateFormAndSend(element)
+	{
+	    if(!$(element).closest('form').valid())
+	    {
+		$("#messageBox").css({color:'Red'});  
+		$( "#messageBox" ).dialog({
+		  modal: true,
+		  buttons: {
+		    Cerrar: function() {
+		      $( this ).dialog( "close" );
+		    }
+		  }
+		});
+		return false;
+		console.info('no es valido');
+	    }
+	    else
+	    {
+		$.ajax({
+		  url: $("#data_form").attr('action'),
+		  data: $("#data_form").serialize(),
+		  type: 'post',
+		  dataType: 'json',
+		    success: function(json){
+			  if(json.response == 'ok')
+			  {
+			      alert('Gracias por llenar la encuesta');
+			  }
+			  window.location = "index.html";
+		    }
+		    , 
+		    complete: function()
+		    {
+			
+		    }
+		  }); 
+	    }
+	    return false;
+	}
+	
+    </script>
     </body>
 </html>

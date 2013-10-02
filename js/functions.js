@@ -1,5 +1,7 @@
 function checkQuestion(questionId)
 {
+    if(questionId > 15)
+        return false;
     question = questionList[questionId];
     //console.info(question);
     var ok = 0;
@@ -10,12 +12,22 @@ function checkQuestion(questionId)
         if($("#q1:checked").length > 0)
         ok++;
     }
+    else
+    {
+        if($("#q1:checked").length > 0)
+            ok--;
+    }
 
     if(question.opciones[1].correcto == 1)
     {
         cantidadok++;
         if($("#q2:checked").length > 0)
         ok++;
+    }
+    else
+    {
+        if($("#q2:checked").length > 0)
+            ok--;
     }
 
     if(question.opciones[2].correcto == 1)
@@ -24,6 +36,11 @@ function checkQuestion(questionId)
         if($("#q3:checked").length > 0)
         ok++;
     }
+    else
+    {
+        if($("#q3:checked").length > 0)
+            ok--;
+    }
 
     if(question.opciones[3].correcto == 1)
     {
@@ -31,6 +48,13 @@ function checkQuestion(questionId)
         if($("#q4:checked").length > 0)
         ok++;
     }
+    else
+    {
+        if($("#q4:checked").length > 0)
+            ok--;
+    }
+    //console.log(cantidadok);
+    //console.log(ok);
     if(ok == cantidadok)
     {
         $("#semaforo").attr("src", "images/semaforo-verde.png");
@@ -40,7 +64,7 @@ function checkQuestion(questionId)
     {
         $("#semaforo").attr("src", "images/semaforo-amarillo.png");
     }
-    if(ok == 0)
+    if(ok <= 0)
     {
         $("#semaforo").attr("src", "images/semaforo-rojo.png");
     }
@@ -48,10 +72,32 @@ function checkQuestion(questionId)
 
 }
 
+function doShowEndOfQuestions()
+{
+    changeGoodAnswerImage();
+    console.info(goodAnswers);
+    $("#finalScore").fadeIn();
+    if(goodAnswers == 15)
+    {
+        $("#finalScoreAllGood").fadeIn();
+    }
+    else
+    {
+        $("#finalScoreNotGood").fadeIn();
+    }
+    setTimeout(function(){
+                window.location = "formulario.php";
+                }, 3000);
+    return false;
+}
+
 function showQuestion(questionId)
 {
+    if(questionId > 15)
+        return doShowEndOfQuestions();
+        
     question = questionList[questionId];
-    console.info(question);
+    //console.info(question);
     //console.info(question['pregunta']);
     //console.info(question.pregunta);
     $("#questionNumber").val(questionId);
@@ -117,10 +163,11 @@ function sendFormToServer()
       type: 'post',
       dataType: 'json',
         success: function(json){
-              console.log(goodAnswers);
+              //console.log(goodAnswers);
               if(json.response == "ok")
               {
                   goodAnswers++;
+                  changeGoodAnswerImage();
               }
               console.log(goodAnswers);
         }
@@ -132,8 +179,64 @@ function sendFormToServer()
                 clearCheckBoxes();
                 questionNumber++;
                 showQuestion(questionNumber);
+                
                 }, 3000);
             
         }
       });   
+}
+
+function changeGoodAnswerImage()
+{
+    var imgsrc = "images/puntaje1_15.png";
+    switch(goodAnswers)
+    {
+        case 0:
+        case 1:
+            imgsrc = "images/puntaje1_15.png";
+        break;
+        case 2:
+            imgsrc = "images/puntaje2_15.png";
+        break;
+        case 3:
+            imgsrc = "images/puntaje3_15.png";
+        break;
+        case 4:
+            imgsrc = "images/puntaje4_15.png";
+        break;
+        case 5:
+            imgsrc = "images/puntaje5_15.png";
+        break;
+        case 6:
+            imgsrc = "images/puntaje6_15.png";
+        break;
+        case 7:
+            imgsrc = "images/puntaje7_15.png";
+        break;
+        case 8:
+            imgsrc = "images/puntaje8_15.png";
+        break;
+        case 9:
+            imgsrc = "images/puntaje9_15.png";
+        break;
+        case 10:
+            imgsrc = "images/puntaje10_15.png";
+        break;
+        case 11:
+            imgsrc = "images/puntaje11_15.png";
+        break;
+        case 12:
+            imgsrc = "images/puntaje12_15.png";
+        break;
+        case 13:
+            imgsrc = "images/puntaje13_15.png";
+        break;
+        case 14:
+            imgsrc = "images/puntaje14_15.png";
+        break;
+        case 15:
+            imgsrc = "images/puntaje15_15.png";
+        break;
+    }
+    $("#img_puntaje").attr("src", imgsrc);
 }
