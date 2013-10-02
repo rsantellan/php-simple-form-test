@@ -450,6 +450,12 @@ div.mainQuestionBody div.finalErrorTextContainer div.finalErrorTextBody a{
     text-decoration:none;
 }
 
+div.mainQuestionBody div.messageTextContainer{
+    margin-top: 35px;
+    text-align: center;
+    display: none;
+}
+
 div.answerCheck input[type=checkbox] {
 	display:none;
 }

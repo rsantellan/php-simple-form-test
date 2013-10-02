@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAnswers'])))
+{
+    header("Location: index.html");
+    die();
+}
+//var_dump($_SESSION);
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +22,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<script src="js/jquery.validate.min.js"></script>
 	<script src="js/additional-methods.min.js"></script>
-	<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+	<link type="image/x-icon" href="favicon.ico" rel="shortcut icon">
     </head>
     <body>
         <div class="container">
@@ -184,11 +196,13 @@
 		  type: 'post',
 		  dataType: 'json',
 		    success: function(json){
-			  if(json.response == 'ok')
+			  if(json.result == 'ok')
 			  {
 			      alert('Gracias por llenar la encuesta');
 			  }
-			  window.location = "index.html";
+			  setTimeout(function(){
+			    window.location = "index.html";
+			  }, 3000);
 		    }
 		    , 
 		    complete: function()

@@ -20,7 +20,7 @@ if($questionNumber == 15)
     $_SESSION['lastQuestionAnswers'] = $goodAnswers;
     
 }
-if($questionNumber <= 15)
+if($questionNumber < 15)
 {
     $_SESSION['questionNumber'] = $questionNumber + 1;
 }

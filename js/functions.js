@@ -75,19 +75,23 @@ function checkQuestion(questionId)
 function doShowEndOfQuestions()
 {
     changeGoodAnswerImage();
-    console.info(goodAnswers);
+    //console.info(goodAnswers);
     $("#finalScore").fadeIn();
     if(goodAnswers == 15)
     {
         $("#finalScoreAllGood").fadeIn();
+        setTimeout(function(){
+                window.location = "formulario.php";
+                }, 6000);
     }
     else
     {
         $("#finalScoreNotGood").fadeIn();
+        setTimeout(function(){
+                window.location = "index.html";
+                }, 9000);
     }
-    setTimeout(function(){
-                window.location = "formulario.php";
-                }, 3000);
+    
     return false;
 }
 
@@ -95,7 +99,28 @@ function showQuestion(questionId)
 {
     if(questionId > 15)
         return doShowEndOfQuestions();
-        
+    if(questionId == 5)
+    {
+        $("#messageGoingOn").fadeOut(400, function(){
+            $("#messageGoingOnImage").attr("src", "images/adelante.png");
+        });
+    }
+    if(questionId == 9)
+    {
+        $("#messageGoingOn").fadeOut(400, function(){
+            $("#messageGoingOnImage").attr("src", "images/vas_bien.png");
+        });
+    }
+    if(questionId == 13)
+    {
+        $("#messageGoingOn").fadeOut(400, function(){
+            $("#messageGoingOnImage").attr("src", "images/vamos_falta_poco.png");
+        });
+    }
+    if(questionId == 15)
+    {
+        $("#messageGoingOn").fadeOut();
+    }
     question = questionList[questionId];
     //console.info(question);
     //console.info(question['pregunta']);
@@ -149,6 +174,22 @@ function checkSendAndSaveQuestion()
     if(processing)
         return false;
     processing = true;
+    if(questionNumber == 4)
+    {
+        $("#messageGoingOn").fadeIn();
+    }
+    if(questionNumber == 8)
+    {
+        $("#messageGoingOn").fadeIn();
+    }
+    if(questionNumber == 12)
+    {
+        $("#messageGoingOn").fadeIn();
+    }
+    if(questionNumber == 14)
+    {
+        $("#messageGoingOn").fadeIn();
+    }
     checkQuestion(questionNumber);
     sendFormToServer();
     
@@ -169,7 +210,7 @@ function sendFormToServer()
                   goodAnswers++;
                   changeGoodAnswerImage();
               }
-              console.log(goodAnswers);
+              //console.log(goodAnswers);
         }
         , 
         complete: function()

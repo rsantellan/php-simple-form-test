@@ -25,6 +25,8 @@ if( (isset($_SESSION['lastQuestionNumber']) && isset($_SESSION['lastQuestionAnsw
         {
             saveNewContenstant($ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation);
         }
+        unset($_SESSION['lastQuestionNumber']);
+        unset($_SESSION['lastQuestionAnswers']);
         echo json_encode(array('result' => 'ok'));
         die;
     }

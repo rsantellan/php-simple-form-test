@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 01, 2013 at 11:45 AM
+-- Generation Time: Oct 02, 2013 at 06:01 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -23,14 +23,27 @@ USE `surco`;
 --
 
 CREATE TABLE IF NOT EXISTS `concursante` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `escuela` varchar(255) NOT NULL,
-  `cursa` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `transporte` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `ci` int(11) NOT NULL,
+  `name` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `lastname` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `age` int(11) NOT NULL,
+  `phone` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `email` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `state` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `school` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `grade` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `transportation` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  PRIMARY KEY (`ci`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Dumping data for table `concursante`
+--
+
+INSERT INTO `concursante` (`ci`, `name`, `lastname`, `age`, `phone`, `email`, `state`, `school`, `grade`, `transportation`) VALUES
+(12345678, 'name', 'lastname', 9, '654654654', 'example@example.com', 'state', 'school', 'grade', 'transportation'),
+(39678133, 'Rodrigo', 'Santellan', 12, '26134135', 'rsantellan@gmail.com', 'Montevideo', 'experimental', '4', 'tren'),
+(98765432, 'name', 'lastname', 10, '2131231', 'example@example.com', 'state', 'school', 'grade', 'transportation');
 
 -- --------------------------------------------------------
 
@@ -141,7 +154,7 @@ INSERT INTO `pregunta` (`id`, `nro`, `pregunta`) VALUES
 (8, 8, '8) En una motocicleta, el máximo total de personas que pueden viajar es :'),
 (9, 9, '9) A partir de la nueva reglamentación todas las bicicletas que se vendan deberán contar con equipamiento de seguridad y además...'),
 (10, 10, '10) Las  bicicletas, exclusivamente destinadas a competencias deportivas'),
-(11, 11, '11)  La venta de motos, ciclomotores o similares “cero kilómetro”, a partir de la reglamentación vigente, debe ser acompañada de...'),
+(11, 11, '11)  La venta de motos, ciclomotores o similares "cero kilómetro", a partir de la reglamentación vigente, debe ser acompañada de...'),
 (12, 12, '12) Cuando se está conduciendo una moto, bicicleta o similar está permitido...'),
 (13, 13, '13) Las disposiciones de las leyes de tránsito son:'),
 (14, 14, '14) Para poder circular en una moto, motocicleta o similar se requiere:'),
@@ -156,4 +169,3 @@ INSERT INTO `pregunta` (`id`, `nro`, `pregunta`) VALUES
 --
 ALTER TABLE `opcion`
   ADD CONSTRAINT `opcion_ibfk_1` FOREIGN KEY (`pregunta_id`) REFERENCES `pregunta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
