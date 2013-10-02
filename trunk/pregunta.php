@@ -57,6 +57,7 @@ header('Content-type: text/html; charset=UTF-8') ;
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="js/functions.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" >
     </head>
     
     <body>
@@ -150,13 +151,17 @@ header('Content-type: text/html; charset=UTF-8') ;
 			    </a>
 			</div>
 			<div class="clear"></div>
+			<div id="messageGoingOn" class="messageTextContainer">
+			    <img id="messageGoingOnImage" src="images/continua.png" />
+			</div>
+			<div class="clear"></div>
 			<div id="finalScoreAllGood" class="finalTextContainer finalOkTextContainer">
 			    <img src="images/felicitaciones.png" />
 			</div>
 			<div id="finalScoreNotGood" class="finalTextErrorContainer finalErrorTextContainer">
 			    <img src="images/texto_perdedor.png" />
 			    <div class="clear"></div>
-			    <a href="javascript:void(0)"><img src="images/ingresando_aqui.png" /></a>
+			    <a href="http://www.unasev.gub.uy/inicio/normativa/leyes" target="_blank"><img src="images/ingresando_aqui.png" /></a>
 			</div>
 	    </div>
 	    <div class="footer">
