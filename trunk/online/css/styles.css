@@ -509,13 +509,6 @@ div.container div.headerHome div.headerSpaceText{
     background-color: #4c0066;
 }
 
-div.container div.link_container_back{
-    background-color: #a39abf; 
-}
-div.container div.link_container_back a{
-    margin-top: 3px;
-}
-
 div.container div.mainPremiosBody{
     background-color: #a39abf; 
 }
@@ -546,19 +539,26 @@ div.container div.extraPremiosFooter{
 
 
 
-
+/**
 div.container div.mainPremiosBody div.premiosRow div.leftPremioColumn{
-    text-align: left;
+    float: left;
+    width: 33%;
+    text-align: center;
+    
 }
 
 div.container div.mainPremiosBody div.premiosRow div.centerPremioColumn{
+    float: left;
+    width: 33%;
     text-align: center;
 }
 
 div.container div.mainPremiosBody div.premiosRow div.rightPremioColumn{
-    text-align: right;
+    float: left;
+    width: 33%;
+    text-align: center;
 }
-
+**/
 
 /***
  * 
