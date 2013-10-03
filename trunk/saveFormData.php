@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'defines/functions.php';
-if( (isset($_SESSION['lastQuestionNumber']) && isset($_SESSION['lastQuestionAnswers'])))
+if(((isset($_SESSION['lastQuestionNumber']) && isset($_SESSION['lastQuestionAnswers'])) || $_SESSION['lastQuestionAnswers'] == 15))
 {
     
     if(isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["ci"]) 
@@ -32,8 +32,8 @@ if( (isset($_SESSION['lastQuestionNumber']) && isset($_SESSION['lastQuestionAnsw
     }
     else
     {
-        //echo json_encode(array('result' => 'error'));
-        //die;
+        unset($_SESSION['lastQuestionNumber']);
+        unset($_SESSION['lastQuestionAnswers']);
     }    
 }
 echo json_encode(array('result' => 'error'));

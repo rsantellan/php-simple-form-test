@@ -13,13 +13,14 @@ if(!isset($_SESSION['questionAnswers']))
 }
 $goodAnswers = $_SESSION['questionAnswers'];
 $questionNumber = (int) $_POST['questionNumber'];
-
+/*
 if($questionNumber == 15)
 {
     $_SESSION['lastQuestionNumber'] = true;
     $_SESSION['lastQuestionAnswers'] = $goodAnswers;
     
 }
+*/
 if($questionNumber < 15)
 {
     $_SESSION['questionNumber'] = $questionNumber + 1;
@@ -119,7 +120,11 @@ if(isset($questions[$questionNumber]))
     {
         echo json_encode(array('response' => 'ok'));
         $_SESSION['questionAnswers']  = $goodAnswers + 1;
-        $_SESSION['lastQuestionAnswers'] = $goodAnswers + 1;
+        if($questionNumber == 15)
+        {
+            $_SESSION['lastQuestionNumber'] = true;
+            $_SESSION['lastQuestionAnswers'] = 15;
+        }
     }
     else
     {

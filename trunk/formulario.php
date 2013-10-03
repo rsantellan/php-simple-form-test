@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-if((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAnswers'])))
+if(((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAnswers'])) || $_SESSION['lastQuestionAnswers'] != 15))
 {
+    //unset($_SESSION['lastQuestionNumber']);
+    //unset($_SESSION['lastQuestionAnswers']);
     header("Location: index.html");
     die();
 }
@@ -127,8 +129,7 @@ if((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAns
 			lastname: "required",
 			ci: {
 				required: true,
-				minlength: 8,
-				maxlength: 8
+				digits: true
 			},
 			age: {
 				required: true,
@@ -154,13 +155,15 @@ if((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAns
 			lastname: "Ingresa tu apellido",
 			ci: {
 				required: "Ingresa tu cedula",
-				minlength: "Acuerdate que tu cedula tiene que ser sin puntos ni guiones"
+				digits: "Acuerdate que tu cedula tiene que ser sin puntos ni guiones"
 			},
 			age: {
 				required: "Ingresa cuantos a&ntilde;os tienes",
+				digits: "En tu edad solo pueden ser n&ucaute;meros"
 			},
 			phone: {
 				required: "Ingresa tu tel&eacute;fono",
+				digits: "Tu tel&eacute;fono solo pueden ser n&uacute;meros"
 			},
 			email: "Ingresa una direcci&oacute;n valida de e-mail",
 			state: "Ingresa tu departamento",
@@ -169,7 +172,7 @@ if((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAns
 			transportation: "Ingresa la forma de transporte que utilizas para ir a la escuela.",
 		},
 	     errorLabelContainer: "#messageBox",
-	     wrapper: "span"
+	     wrapper: "li"
 	    });
 	
 	function validateFormAndSend(element)

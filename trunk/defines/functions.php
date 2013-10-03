@@ -5,9 +5,81 @@ define("DBUSER", 'root');
 define("DBPASS", 'root');
 define("DBNAME", 'surco');
 
+function retrieveTodayWinners($limit)
+{
+    $sql = "select ci, name, lastname, age, phone, email, state, school, grade, transportation from concursante concursante where DATE(updated_at) = DATE(now()) order by updated_at asc limit ?";
+    $conn = new mysqli(DBSERVER, DBUSER, DBPASS, DBNAME);
+   // check connection
+   if ($conn->connect_error) {
+    trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+    return array();
+    }
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $limit);
+    $stmt->execute();
+    /* Bind results to variables */
+    $stmt->bind_result($ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation);
+    $list = array();
+    /* fetch values */
+    while ($stmt->fetch()) {
+	$usuario = new stdClass();
+	$usuario->ci = $ci;
+	$usuario->name = $name;
+	$usuario->lastname = $lastname;
+	$usuario->age = $age;
+	$usuario->phone = $phone;
+	$usuario->email = $email;
+	$usuario->state = $state;
+	$usuario->school = $school;
+	$usuario->grade = $grade;
+	$usuario->transportation = $transportation;
+	$list[] = $usuario;
+    }
+    
+    $stmt->close(); 
+    $conn->close();
+    return $list; 
+}
+
+function returnRandomWinners($limit)
+{
+    $sql = "select ci, name, lastname, age, phone, email, state, school, grade, transportation from concursante concursante order by rand() limit ?";
+    $conn = new mysqli(DBSERVER, DBUSER, DBPASS, DBNAME);
+   // check connection
+   if ($conn->connect_error) {
+    trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+    return array();
+    }
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $limit);
+    $stmt->execute();
+    /* Bind results to variables */
+    $stmt->bind_result($ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation);
+    $list = array();
+    /* fetch values */
+    while ($stmt->fetch()) {
+	$usuario = new stdClass();
+	$usuario->ci = $ci;
+	$usuario->name = $name;
+	$usuario->lastname = $lastname;
+	$usuario->age = $age;
+	$usuario->phone = $phone;
+	$usuario->email = $email;
+	$usuario->state = $state;
+	$usuario->school = $school;
+	$usuario->grade = $grade;
+	$usuario->transportation = $transportation;
+	$list[] = $usuario;
+    }
+    
+    $stmt->close(); 
+    $conn->close();
+    return $list; 
+}
+
 function saveNewContenstant($ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation)
 {
-    $sql = "REPLACE INTO concursante (ci, name, lastname, age, phone, email, state, school, grade, transportation) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "REPLACE INTO concursante (ci, name, lastname, age, phone, email, state, school, grade, transportation, updated_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
     $conn = new mysqli(DBSERVER, DBUSER, DBPASS, DBNAME);
    // check connection
    if ($conn->connect_error) {
