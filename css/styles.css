@@ -97,21 +97,21 @@ div.footer{
 }
 
 div.homeFooter{
-    text-align: left;
+    text-align: center;
     border-top: solid;
     border-top-color: #3d0052;
     border-top-width: 5px;
 }
 
 div.homeFooter img{
-    margin-left: 55px;
+    /**margin-left: 55px;**/
 }
 div.homeTextFooter{
     background-color: #B501F0;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
-    text-align: center;
+    text-align: justify;
 }
 
 /***
@@ -186,7 +186,7 @@ div.mainBody div.form_container div.form_questions_container form.real_form div.
 div.mainBody div.form_container div.form_questions_container form.real_form div.input_label{
     position: relative;
     margin-left: 40px;
-    width: 80%;
+    width: 82%;
     height: 30px;
 }
 
@@ -296,7 +296,7 @@ div.header div.headerQuestionText{
     font-weight: bold;
     height: 60px;
     line-height: 60px;
-    text-align: justify;
+    text-align: center;
     text-transform: uppercase;
 }
 
