@@ -58,6 +58,10 @@ header('Content-type: text/html; charset=UTF-8') ;
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="js/functions.js"></script>
 	<link rel="shortcut icon" href="favicon.ico" >
+	
+	<![if !IE]>
+	    <link rel="stylesheet" type="text/css" href="css/not-ie.css" />
+	<![endif]>
     </head>
     
     <body>
@@ -162,6 +166,17 @@ header('Content-type: text/html; charset=UTF-8') ;
 			    <img src="images/texto_perdedor.png" />
 			    <div class="clear"></div>
 			    <a href="http://www.unasev.gub.uy/inicio/normativa/leyes" target="_blank"><img src="images/ingresando_aqui.png" /></a>
+			</div>
+			<div class="clear"></div>
+			<div id="moveToNext" class="moveToNextContainer">
+			    <a href="javascript:void(0)" onclick="nextQuestion()">
+				<img id="img_puntaje" src="images/boton_siguiente.png" />
+			    </a>
+			</div>
+			<div id="moveToForm" class="moveToFormContainer">
+			    <a href="formulario.php">
+				<img id="img_puntaje" src="images/carga_datos.png" />
+			    </a>
 			</div>
 	    </div>
 	    <div class="footer">

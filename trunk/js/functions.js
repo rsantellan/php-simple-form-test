@@ -74,12 +74,14 @@ function checkQuestion(questionId)
 
 function doShowEndOfQuestions()
 {
+    $("#moveToNext").hide();
     changeGoodAnswerImage();
     //console.info(goodAnswers);
     $("#finalScore").fadeIn();
     if(goodAnswers == 15)
     {
         $("#finalScoreAllGood").fadeIn();
+        $("#moveToForm").fadeIn();
         setTimeout(function(){
                 window.location = "formulario.php";
                 }, 30000);
@@ -99,27 +101,35 @@ function showQuestion(questionId)
 {
     if(questionId > 15)
         return doShowEndOfQuestions();
+    
+    //$("#moveToNext").hide();
+    
     if(questionId == 5)
     {
         $("#messageGoingOn").fadeOut(400, function(){
             $("#messageGoingOnImage").attr("src", "images/adelante.png");
+            $("#moveToNext").removeClass('moveToNextAlternativePostion');
         });
     }
     if(questionId == 9)
     {
         $("#messageGoingOn").fadeOut(400, function(){
             $("#messageGoingOnImage").attr("src", "images/vas_bien.png");
+            $("#moveToNext").removeClass('moveToNextAlternativePostion');
         });
     }
     if(questionId == 13)
     {
         $("#messageGoingOn").fadeOut(400, function(){
             $("#messageGoingOnImage").attr("src", "images/vamos_falta_poco.png");
+            $("#moveToNext").removeClass('moveToNextAlternativePostion');
         });
     }
     if(questionId == 15)
     {
-        $("#messageGoingOn").fadeOut();
+        $("#messageGoingOn").fadeOut(400, function(){
+            $("#moveToNext").removeClass('moveToNextAlternativePostion');
+        });
     }
     question = questionList[questionId];
     //console.info(question);
@@ -174,28 +184,58 @@ function checkSendAndSaveQuestion()
     if(processing)
         return false;
     processing = true;
-    if(questionNumber == 4)
-    {
-        $("#messageGoingOn").fadeIn();
-    }
-    if(questionNumber == 8)
-    {
-        $("#messageGoingOn").fadeIn();
-    }
-    if(questionNumber == 12)
-    {
-        $("#messageGoingOn").fadeIn();
-    }
-    if(questionNumber == 14)
-    {
-        $("#messageGoingOn").fadeIn();
-    }
+    
+    //$("#moveToNext").fadeOut();
     checkQuestion(questionNumber);
     sendFormToServer();
     
     processing = false;
 }
 
+function nextQuestion()
+{
+    if(questionNumber == 4)
+    {
+        $("#moveToNext").addClass('moveToNextAlternativePostion');
+        $("#messageGoingOn").fadeIn(1200, function(){
+            $(this).fadeOut(1200, function(){
+                $("#moveToNext").removeClass('moveToNextAlternativePostion');
+            });
+        });
+    }
+    if(questionNumber == 8)
+    {
+        $("#moveToNext").addClass('moveToNextAlternativePostion');
+        $("#messageGoingOn").fadeIn(1200, function(){
+            $(this).fadeOut(1200, function(){
+                    $("#moveToNext").removeClass('moveToNextAlternativePostion');
+            });
+        });
+    }
+    if(questionNumber == 12)
+    {
+        $("#moveToNext").addClass('moveToNextAlternativePostion');
+        $("#messageGoingOn").fadeIn(1200, function(){
+            $(this).fadeOut(1200, function(){
+                    $("#moveToNext").removeClass('moveToNextAlternativePostion');
+            });
+        });
+    }
+    if(questionNumber == 14)
+    {
+        $("#moveToNext").addClass('moveToNextAlternativePostion');
+        $("#messageGoingOn").fadeIn(1200, function(){
+            $(this).fadeOut(1200, function(){
+                    $("#moveToNext").removeClass('moveToNextAlternativePostion');
+            });
+        });
+    }
+    //$("#messageGoingOn").hide();
+    //$("#moveToNext").hide();
+    clearCheckBoxes();
+    questionNumber++;
+    showQuestion(questionNumber);
+}
 function sendFormToServer()
 {
     $.ajax({
@@ -207,7 +247,7 @@ function sendFormToServer()
               //console.log(goodAnswers);
               if(json.response == "ok")
               {
-                  goodAnswers++;
+                  goodAnswers = json.goodanswer;
                   changeGoodAnswerImage();
               }
               //console.log(goodAnswers);
@@ -218,8 +258,9 @@ function sendFormToServer()
             setTimeout(function(){
                 $("#semaforo").attr("src", "images/semaforo.png");
                 clearCheckBoxes();
-                questionNumber++;
-                showQuestion(questionNumber);
+                $("#moveToNext").fadeIn();
+                //questionNumber++;
+                //showQuestion(questionNumber);
                 
                 }, 3000);
             
