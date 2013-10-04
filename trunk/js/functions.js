@@ -81,7 +81,7 @@ function doShowEndOfQuestions()
     if(goodAnswers == 15)
     {
         $("#finalScoreAllGood").fadeIn();
-        $("#moveToForm").fadeIn();
+        //$("#moveToForm").fadeIn();
         setTimeout(function(){
                 window.location = "formulario.php";
                 }, 30000);

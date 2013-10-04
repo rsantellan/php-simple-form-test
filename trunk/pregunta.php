@@ -160,7 +160,9 @@ header('Content-type: text/html; charset=UTF-8') ;
 			</div>
 			<div class="clear"></div>
 			<div id="finalScoreAllGood" class="finalTextContainer finalOkTextContainer">
-			    <img src="images/felicitaciones.png" />
+			    <a href="formulario.php">
+				<img src="images/felicitaciones.png" />
+			    </a>
 			</div>
 			<div id="finalScoreNotGood" class="finalTextErrorContainer finalErrorTextContainer">
 			    <img src="images/texto_perdedor.png" />
@@ -171,11 +173,6 @@ header('Content-type: text/html; charset=UTF-8') ;
 			<div id="moveToNext" class="moveToNextContainer">
 			    <a href="javascript:void(0)" onclick="nextQuestion()">
 				<img id="img_puntaje" src="images/boton_siguiente.png" />
-			    </a>
-			</div>
-			<div id="moveToForm" class="moveToFormContainer">
-			    <a href="formulario.php">
-				<img id="img_puntaje" src="images/carga_datos.png" />
 			    </a>
 			</div>
 	    </div>
