@@ -13,6 +13,11 @@ body{
 	font-family: maiandra;
 }
 
+
+a img{
+    border: none;
+}
+
 div.clear{
     clear: both !important;
 }
@@ -418,7 +423,7 @@ div.mainQuestionBody div.finalTextErrorContainer{
 }
 
 div.mainQuestionBody div.finalOkTextContainer{
-    margin-top: 85px;
+    margin-top: 45px;
     display: none;
 }
 
@@ -454,30 +459,6 @@ div.mainQuestionBody div.messageTextContainer{
     margin-top: 35px;
     text-align: center;
     display: none;
-}
-
-div.answerCheck input[type=checkbox] {
-	display:none;
-}
- 
-div.answerCheck input[type=checkbox] + label
-{
-	
-	background-image:url('../images/box.png');
-    background-repeat:no-repeat;
-	height: 32px;
-	width: 32px;
-	display:inline-block;
-	padding: 0 0 0 0px;
-}
-div.answerCheck input[type=checkbox]:checked + label
-{
-	background-image:url('../images/box-checked.png');
-	background-repeat:no-repeat;
-	height: 32px;
-	width: 32px;
-	display:inline-block;
-	padding: 0 0 0 0px;
 }
 
 /**
@@ -526,9 +507,7 @@ div.container div.mainPremiosBody div.premiosRow{
 }
 
 div.container div.mainPremiosBody div.premiosRowBottom{
-    vertical-align: bottom;
-    display: table-cell;
-    height: 230px !important;
+    height: 180px !important;
 }
 
 div.container div.mainPremiosBody div.premiosRow div{
@@ -594,4 +573,32 @@ div.container div.mainHomeBody div.triviaTextContainer{
     float: left;
     margin-right: 10px;
     margin-top: 50px;
+}
+
+div.container div.mainHomeBody div.instruccionesContainer{
+    float: right;
+    position: relative;
+    top: -45px;
+    /**
+    margin-right: 10px;
+    margin-top: 65px;
+    **/
+}
+
+
+div.moveToNextContainer {
+    float: right;
+    margin-top: 160px;
+    width: 175px;
+}
+
+div.moveToNextAlternativePostion{
+    margin-top: 75px !important;
+}
+
+
+div.moveToFormContainer{
+    display: none;
+    float: right;
+    margin-top: 10px;
 }

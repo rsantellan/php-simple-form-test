@@ -1,0 +1,23 @@
+div.answerCheck input[type=checkbox] {
+	display:none;
+}
+ 
+div.answerCheck input[type=checkbox] + label
+{
+	
+	background-image:url('../images/box.png');
+    background-repeat:no-repeat;
+	height: 32px;
+	width: 32px;
+	display:inline-block;
+	padding: 0 0 0 0px;
+}
+div.answerCheck input[type=checkbox]:checked + label
+{
+	background-image:url('../images/box-checked.png');
+	background-repeat:no-repeat;
+	height: 32px;
+	width: 32px;
+	display:inline-block;
+	padding: 0 0 0 0px;
+}

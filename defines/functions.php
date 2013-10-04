@@ -5,6 +5,17 @@ define("DBUSER", 'root');
 define("DBPASS", 'root');
 define("DBNAME", 'surco');
 
+function calculateNumberOfOkAnswers($data)
+{
+    $quantity = 0;
+    foreach($data as $value)
+    {
+        if($value)
+            $quantity ++;
+    }
+    return $quantity;
+}
+
 function retrieveTodayWinners($limit)
 {
     $sql = "select ci, name, lastname, age, phone, email, state, school, grade, transportation from concursante concursante where DATE(updated_at) = DATE(now()) order by updated_at asc limit ?";
@@ -86,7 +97,10 @@ function saveNewContenstant($ci, $name, $lastname, $age, $phone, $email, $state,
     trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
     return array();
    }
+   
    $stmt = $conn->prepare($sql);
+   //var_dump($conn->error);
+   //var_dump($stmt);
    $stmt->bind_param("ississssss", $ci, $name, $lastname, $age, $phone, $email, $state, $school, $grade, $transportation);
    $stmt->execute();
    $stmt->close(); 
