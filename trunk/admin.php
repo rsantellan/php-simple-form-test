@@ -1,7 +1,9 @@
 <?php
 
 session_start();
+
 include_once 'defines/functions.php';
+
 
 $message = "";
 $generated_winners = array();
@@ -33,6 +35,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             unset($_SESSION['user']);
         }
+        if(isset($_POST['exportar']))
+        {
+            exporttocsv("select ci as cedula, name as nombre, lastname as apellido, age as edad, phone as telefono, email, state as departamento, school as escuela, grade as grado, transportation as transporte from concursante", "concursantes.csv");
+            die;
+        }
+        
     }
     //die('aca');
 }
@@ -71,7 +79,7 @@ if(!isset($_SESSION['user'])):
 
   <section class="about">
     <p class="about-author">
-      Creado por <a href="mailto:rsantellan@gmail.com?Subject=Surco%20Trivia" target="_top">Rodrigo Santellan</a>
+      Creado por: VisualPost/<a href="mailto:rsantellan@gmail.com?Subject=Surco%20Trivia" target="_top">Rodrigo Santellan</a>
     </p>  
   </section>
 </body>
@@ -175,6 +183,13 @@ $winners = retrieveTodayWinners(10);
         <form method="post" action="admin.php">
             <input type="hidden" value="2" name="generateWinners" />
             <p class="submit"><input type="submit" value="Generar"></p>
+        </form>
+        
+        <hr style="margin-top: 10px" />
+        
+        <form method="post" action="admin.php">
+            <input type="hidden" value="1" name="exportar" />
+            <p class="submit"><input type="submit" value="Exportar"></p>
         </form>
         
         <hr style="margin-top: 10px" />
