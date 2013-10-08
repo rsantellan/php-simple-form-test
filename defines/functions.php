@@ -160,3 +160,46 @@ function my_html_encode($var)
 {
 	return htmlentities($var) ;
 }
+
+function cleanData(&$str)
+{
+    $str = preg_replace("/\t/", "\\t", $str);
+    $str = preg_replace("/\r?\n/", "\\n", $str);
+    if(strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+    if ($str=='') {$str='-';}
+}
+
+function exporttocsv($query_exp,$name)
+{
+    $mysqli = new mysqli(DBSERVER, DBUSER, DBPASS, DBNAME);
+    $filename = $name.' - '.date('Y.m.d').'.xls'; /*set desired output file name here*/
+    header("Content-Disposition: attachment; filename=\"$filename\"");
+    header("Content-Type: application/vnd.ms-excel");
+    $flag = false;
+    if ($result = $mysqli->query($query_exp))
+    {
+	if ($result->num_rows>0)
+	{
+	    $result->data_seek(0);
+	    while ($row = $result->fetch_assoc())
+	    {
+		if(!$flag)
+		{
+		    print implode(",", array_keys($row)) . "\r\n";
+		    $flag = true;
+		}
+		array_walk($row, 'cleanData');
+		print implode(",", array_values($row)) . "\r\n";
+	    }
+	}
+	else 
+	{ 
+	    $debug = $debug.'<br/>Empty result'; /*DEBUG*/ 
+	}
+    }
+    else 
+    { 
+	$debug = $debug.'<br/>Oups, Query error!<br/>Query: '.$query_exp.'<br/>Error: '.$mysqli->error.'.'; /*DEBUG*/ 
+    }
+    $mysqli->close();
+}
