@@ -193,6 +193,12 @@ div.mainBody div.form_container div.form_questions_container form.real_form div.
     margin-left: 40px;
     width: 82%;
     height: 30px;
+    margin-bottom: 5px;
+}
+
+div.mainBody div.form_container div.form_questions_container form.real_form div.input_label input{
+    width: 140px !important;
+    height: 20px !important;
 }
 
 div.mainBody div.form_container div.form_questions_container form.real_form div.input_transportation{
