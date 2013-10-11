@@ -164,8 +164,8 @@ div.mainBody div.lapiz_container {
 }
 
 div.mainBody div.form_container div.form_questions_container form.real_form{
-    width: 408px !important;
-    height: 553px !important;
+    width: 480px !important;
+    height: 630px !important;
     background-image:url('../images/bloc.png');
     background-repeat:no-repeat;
     margin-left: 40px;
@@ -185,7 +185,7 @@ div.mainBody div.form_container div.form_questions_container  label{
 
 
 div.mainBody div.form_container div.form_questions_container form.real_form div.form_space_div{
-    height: 83px;
+    height: 88px;
 }
 
 div.mainBody div.form_container div.form_questions_container form.real_form div.input_label{
@@ -193,11 +193,11 @@ div.mainBody div.form_container div.form_questions_container form.real_form div.
     margin-left: 40px;
     width: 82%;
     height: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 div.mainBody div.form_container div.form_questions_container form.real_form div.input_label input{
-    width: 140px !important;
+    width: 170px !important;
     height: 20px !important;
 }
 
@@ -212,7 +212,7 @@ div.mainBody div.form_container div.form_questions_container form.real_form div.
 
 div.mainBody div.form_container div.form_questions_container form.real_form div.input_transportation input{
     position: relative;
-    top: 10px;
+    top: 22px;
 }
 
 div.mainBody div.form_container div.form_questions_container form.real_form a.link_enviar{
@@ -225,7 +225,7 @@ div.mainBody div.form_container div.form_questions_container form.real_form labe
     font-size: 14px;
     position: relative;
     margin-left: 40px;
-    top: 10px;
+    top: 5px;
 }
 
 /**
