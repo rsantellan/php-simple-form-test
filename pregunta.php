@@ -1,5 +1,6 @@
 <?php
-
+header("Location: http://www.surco.com.uy/trivia/");
+die();
 session_start();
 
 error_reporting(E_ALL);
