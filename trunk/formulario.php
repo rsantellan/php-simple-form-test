@@ -1,4 +1,6 @@
 <?php
+header("Location: index.html");
+die();
 session_start();
 
 if(((!isset($_SESSION['lastQuestionNumber']) && !isset($_SESSION['lastQuestionAnswers'])) || $_SESSION['lastQuestionAnswers'] != 15))
